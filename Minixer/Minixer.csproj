@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Models\" />
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
