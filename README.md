@@ -1,5 +1,7 @@
 # Minixer
 
+[![Build Status](https://dev.azure.com/jsportaro/Minixer/_apis/build/status/jsportaro.Minixer?branchName=master)](https://dev.azure.com/jsportaro/Minixer/_build/latest?definitionId=2&branchName=master)
+
 CI/CD for Minux Version 2
 
 ## What does it do?
