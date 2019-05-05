@@ -11,8 +11,8 @@ connection.start().then(function () {
 });
 
 
-connection.on("ReceiveMessage", function (eventType) {
-    var msg = eventType.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+connection.on("ReceiveMessage", function (pullRequest) {
+    var msg = pullRequest.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
     var li = document.createElement("li");
     li.textContent = msg;
     document.getElementById("messagesList").appendChild(li);

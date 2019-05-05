@@ -13,7 +13,13 @@
     <div class="row">
         <div class="col-6">&nbsp;</div>
         <div class="col-6">
-            <ul id="messagesList"></ul>
+            <ul id="messagesList">
+
+                @foreach (var pr in Model.PullRequests)
+                {
+                    <li>@pr.Title</li>
+                }
+                </ul>
         </div>
     </div>
 </div>

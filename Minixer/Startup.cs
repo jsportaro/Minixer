@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Minixer.Hubs;
+using Minixer.Infrastructure.Data;
+using Minixer.Infrastructure.Data.Sqlite;
 
 namespace Minixer
 {
@@ -28,6 +30,8 @@ namespace Minixer
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddSignalR();
+            services.AddSqliteStorage();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

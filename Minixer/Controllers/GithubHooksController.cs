@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Minixer.Domain.PullRequests;
 using Minixer.Hubs;
+using Minixer.Infrastructure.Data;
 using Newtonsoft.Json.Linq;
 
 namespace Minixer.Controllers
@@ -15,11 +17,14 @@ namespace Minixer.Controllers
     public class GithubHooksController : ControllerBase
     {
         private readonly IHubContext<RepositoryHub> hubContext;
+        private readonly IPullRequestRepository pullRequestRepository;
 
-
-        public GithubHooksController(IHubContext<RepositoryHub> hubContext)
+        public GithubHooksController(
+            IHubContext<RepositoryHub> hubContext,
+            IPullRequestRepository pullRequestRepository)
         {
             this.hubContext = hubContext;
+            this.pullRequestRepository = pullRequestRepository;
         }
 
         // GET: api/GithubHooks
@@ -49,6 +54,12 @@ namespace Minixer.Controllers
                     break;
                 case "push":
                     await hubContext.Clients.All.SendAsync("ReceiveMessage", "push");
+                    break;
+                case "pull_request":
+                    var pullRequest = body.ToObject<Container>();
+                    await pullRequestRepository.Add(pullRequest);
+
+                    await hubContext.Clients.All.SendAsync("ReceiveMessage", pullRequest.PullRequest.Title);
                     break;
             }
         }
