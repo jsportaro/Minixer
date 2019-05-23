@@ -4,26 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
+<div class="row">
+    <div class="col-md-3">
+        <h2>Pull Requests</h2>
+        <ul id="messagesList">
 
-
-
-<div class="container">
-    <div class="row">&nbsp;</div>
-
-    <div class="row">
-        <div class="col-6">&nbsp;</div>
-        <div class="col-6">
-            <ul id="messagesList">
-
-                @foreach (var pr in Model.PullRequests)
-                {
-                    <li>@pr.Title</li>
-                }
-                </ul>
-        </div>
+            @foreach (var pr in Model.PullRequests)
+            {
+                <li onclick="viewer.connect(@pr.Number)">@pr.Title</li>
+            }
+        </ul>
     </div>
+    <div class="col-md-9">
+        <h2>Virtual Machines</h2>
+        <canvas id="viewer"></canvas>
+    </div>
+  
 </div>
+
+
+@section  Scripts  {
 <script src="~/lib/signalr/dist/browser/signalr.js"></script>
 <script src="~/js/repository.js"></script>
+}
 
 

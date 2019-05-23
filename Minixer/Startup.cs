@@ -29,7 +29,7 @@ namespace Minixer
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            services.AddSignalR();
+            services.AddSignalR().AddMessagePackProtocol();
             services.AddSqliteStorage();
 
         }
@@ -54,6 +54,7 @@ namespace Minixer
             app.UseSignalR(routes =>
             {
                 routes.MapHub<RepositoryHub>("/repositoryhub");
+                routes.MapHub<ViewerHub>("/viewerhub");
             });
 
             app.UseMvcWithDefaultRoute();
