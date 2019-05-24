@@ -24,8 +24,13 @@
 
 
 @section  Scripts  {
-<script src="~/lib/signalr/dist/browser/signalr.js"></script>
-<script src="~/js/repository.js"></script>
+    <script>
+        var exports = {};
+    </script>
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/signalr/dist/browser/signalr-protocol-msgpack.js"></script>
+    <script src="~/lib/signalr/dist/cjs/MessagePackHubProtocol.js"></script>
+    <script src="~/js/repository.js"></script>
 }
 
 

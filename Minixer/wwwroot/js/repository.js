@@ -1,7 +1,7 @@
 ﻿"use strict";
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/repositoryhub").build();
-var viewerConnection = new signalR.HubConnectionBuilder().withUrl("/viewerhub").withHubProtocol(new MessagePackHubProtocol()).build();
+var viewerConnection = new signalR.HubConnectionBuilder().withUrl("/viewerhub").withHubProtocol(new signalR.protocols.msgpack.MessagePackHubProtocol()).build();
 
 //var protocol = new signalR.protocols.msgpack.MessagePackHubProtocol();
 //var viewerConnection = new signalR.HubConnection(
